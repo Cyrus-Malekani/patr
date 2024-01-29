@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Dice Game</title>
+    <style>
+        .dice-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .ascii-dice {
+            font-family: monospace;
+            white-space: pre;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Petals around the Rose</h1>
+    </center>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="dice-container">
+        {% for dice in dice_art %}
+            <div class="ascii-dice">{{ dice }}</div>
+        {% endfor %}
+    </div>
+    <center>
+        <br><br>
+        <form method="post">
+            <input type="number" name="guess" required>
+            <button type="submit">Guess</button>
+        </form>
+    </center>
+</body>
+</html>
