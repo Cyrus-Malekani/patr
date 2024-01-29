@@ -73,7 +73,7 @@ def index():
             flash('Incorrect! Correct Value: ' + str(total) , 'danger')
             session['correct_guesses'] = 0
         
-		session.pop('dice_values', None)  # Remove dice values from session
+        session.pop('dice_values', None)  # Remove dice values from session
         return redirect(url_for('index'))
 
     return render_template('index.html', dice_art=dice_representations)
